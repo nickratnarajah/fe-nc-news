@@ -4,5 +4,52 @@
     color: red;
     Display: flex;
     justify-content: center;
-    align-items: center;
 }
+
+.articles-header {
+    font-size: 5rem;
+    font-weight: semi-bold;
+    color: blue;
+    display: flex;
+    justify-content: center;
+}
+
+.article-card-img {
+    width: 20rem;
+    height: auto;
+    border-radius: 12px
+}
+
+.article-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    transition: box-shadow 0.2s ease;
+}
+@media (max-width: 600px) {
+    .article-card {
+      flex-direction: column;
+      padding-right: 1rem;
+    }
+  }
+
+.article-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+}
+
+.article-card-title {
+    font-size: 2rem;
+}
+
+.article-card-author {
+    font-size: 1.5rem;
+    }
+
+.article-card-topic {
+    font-size: 1.5rem
+}
+
