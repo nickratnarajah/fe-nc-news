@@ -1,13 +1,11 @@
-import { useContext } from "react"
-
-import { PageContext } from "./PageContext"
+import { useNavigate } from "react-router-dom"
 
 
 function Header() {
-    const page = useContext(PageContext)
+    const navigate = useNavigate()
     return (
         <>
-        {page === "main" ? (<header className="header-main">NC News</header>) : null}
+        <header className="header-main" onClick={() => navigate('/')}>NC News</header>
         </>
     )
 }
