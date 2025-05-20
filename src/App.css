@@ -95,3 +95,44 @@ html {
     padding: 5rem;
     color: black
 }
+
+.comment-flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.flex-left-column {
+    display: flex;
+    flex-direction: column;
+    width: 10dvw;
+    flex-shrink: 0;
+    gap: 0.5rem;
+}
+
+.comment-author {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: blue
+}
+
+.comment-time {
+    font-size: 0.8rem;
+    color: grey
+}
+
+.comment-body {
+    font-size: 1.1rem;
+    display: flex;
+    flex: 1;
+    box-sizing: border-box;
+    max-width: 80wv;
+    padding: 0 2rem 0 0
+}
+
+.comment-voted {
+    font-size: 1.5rem;
+    color: green;
+    padding: 0 0 2rem 0
+}

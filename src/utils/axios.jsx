@@ -16,3 +16,9 @@ export const requestArticleById = (article_id) => {
      })
 }
 
+export const requestComments = (article_id) => {
+    return axios.get(endpoint + `/articles/${article_id}/comments`)
+        .then((response) => {
+            return response.data.comments
+        })
+}
