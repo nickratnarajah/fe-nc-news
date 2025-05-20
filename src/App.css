@@ -92,7 +92,7 @@ html {
 
 .article-page-body {
     font-size: 2rem;
-    padding: 5rem;
+    padding: 2rem 5rem 0 5rem;
     color: black
 }
 
@@ -135,4 +135,24 @@ html {
     font-size: 1.5rem;
     color: green;
     padding: 0 0 2rem 0
+}
+
+.view-comments-button {
+    margin:  0 0 2rem 0
+}
+
+.article-page-votes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    font-size: 3rem;
+    color: rgb(0, 189, 50);
+
+}
+
+.error-message {
+    font-size: 2rem;
+    color: red;
+    text-align: center
 }

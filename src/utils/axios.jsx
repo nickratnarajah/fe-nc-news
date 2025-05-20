@@ -22,3 +22,11 @@ export const requestComments = (article_id) => {
             return response.data.comments
         })
 }
+
+export const sendNewVote = (newVote, article_id) => {
+    return axios.patch(endpoint + `/articles/${article_id}`, { inc_votes: newVote })
+        .then((response) => {
+            return response.data.article
+        })
+        // need for error handling/display? see how app behaves
+}
