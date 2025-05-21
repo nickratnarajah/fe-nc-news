@@ -8,13 +8,22 @@ function CommentList({ article_id, comments, setComments }){
 
     useEffect(() => {
         requestComments(article_id).then((comments) => {
+            if(!comments){
+                setIsLoading(false)
+            }
             setComments(comments);
             setIsLoading(false)
         })
     }, [])
-
+    
     if (isLoading) return <p>Loading comments...</p>;
-
+    if (!comments) return (
+        <>
+        <h1 className="comments-header">Comments</h1>
+        <p>No Comments Yet...</p>
+        </>
+    )
+    
     return (
         <>
          <h1 className="comments-header">Comments</h1>
