@@ -30,3 +30,10 @@ export const sendNewVote = (newVote, article_id) => {
         })
         // need for error handling/display? see how app behaves
 }
+
+export const sendNewComment = (newComment, article_id) => {
+    return axios.post(endpoint + `/articles/${article_id}/comments`, newComment)
+    .then((response) => {
+        return response.data.comment
+    })
+}

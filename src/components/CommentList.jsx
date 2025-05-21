@@ -2,9 +2,8 @@ import { requestComments } from "../utils/axios"
 import CommentCard from "./CommentCard"
 import { useEffect, useState } from "react";
 
-function CommentList({ article_id }){
+function CommentList({ article_id, comments, setComments }){
 
-    const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
