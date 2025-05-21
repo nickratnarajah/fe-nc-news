@@ -1,9 +1,11 @@
 import { sendNewComment } from "../utils/axios"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { UserContext } from "./UserContext"
 
 function CommentForm({ onClose, article_id, errorMsg, setErrorMsg, comments, setComments }){
 
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const { user } = useContext(UserContext)
 
 
     const handleSubmit = (e) => {
@@ -11,7 +13,7 @@ function CommentForm({ onClose, article_id, errorMsg, setErrorMsg, comments, set
         setIsSubmitting(true)
         const form = e.target
         const newComment = {
-            username: form.elements.username.value,
+            username: user,
             body: form.elements.body.value
         }
         sendNewComment(newComment, article_id)
@@ -37,8 +39,6 @@ function CommentForm({ onClose, article_id, errorMsg, setErrorMsg, comments, set
                     <h2>Add a Comment</h2>
                     <form className="comment-form" onSubmit= {handleSubmit}>
                         <textarea name="body" placeholder="Write your comment..." rows="5" />
-                        <input name="username" type="text" placeholder="Username" />
-                        <br />
                         <button type="submit">Submit</button>
                         <button type="button" onClick={onClose}>Cancel</button>
                     </form>
@@ -47,9 +47,6 @@ function CommentForm({ onClose, article_id, errorMsg, setErrorMsg, comments, set
   );
 };
 
-//Notes for NC reviewer - I'm aware of the limitation when getting a user to type in their username, 
-// which must be a valid existing one in the database for the funtion to work. I've not yet built the
-// functionality for logging in, but when this is built I should be able to refactor the code where I 
-// can set the username value based on user context 
+
 
 export default CommentForm

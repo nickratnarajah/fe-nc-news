@@ -37,3 +37,10 @@ export const sendNewComment = (newComment, article_id) => {
         return response.data.comment
     })
 }
+
+export const deleteComment = (comment_id) => {
+    return axios.delete(endpoint + `/comments/${comment_id}`)
+    .then((response) => {
+        return response
+    })
+}
