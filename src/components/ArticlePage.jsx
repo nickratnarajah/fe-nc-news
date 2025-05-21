@@ -63,7 +63,7 @@ function handleVoteClick(newVote){
             {showCommentForm && <CommentForm article_id={article_id} errorMsg={errorMsg} setErrorMsg={setErrorMsg} comments={comments} setComments={setComments} onClose={toggleForm}/>}
             {errorMsg && <section className="error-message"><p>Error: {errorMsg}</p><button className="error-close" onClick={()=>setErrorMsg(null)}>Close</button></section>}
         <button className="view-comments-button" onClick={handleViewClick}>{viewComments ? "Hide Comments" : "Show Comments"}</button>
-        {viewComments ? <CommentList article_id={article.article_id} comments={comments} setComments={setComments}/> : null}
+        {viewComments ? <CommentList article_id={article.article_id} comments={comments} setComments={setComments} handleViewClick={handleViewClick}/> : null}
         </div>
         </>
     )

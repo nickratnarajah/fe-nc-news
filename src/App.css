@@ -187,3 +187,12 @@ html {
     gap: 1rem;
     margin: 0 0 2rem 0;
   }
+
+.header-wrapper {
+    display: flex;
+    align-items: center
+}
+
+  .user-details-wrapper {
+    display: flex;
+  }
