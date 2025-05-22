@@ -1,9 +1,14 @@
 import axios from "axios";
 const endpoint = "https://nick-nc-news-first-project.onrender.com/api"
 
-export const requestArticles = (topic) => {
-    const topicString = topic ? `?topic=${topic}` : ""
-    return axios.get(endpoint + "/articles" + topicString)
+export const requestArticles = (topic, sortBy, orderBy) => {
+    const params = new URLSearchParams();
+
+    if (topic) params.append("topic", topic);
+    if (sortBy) params.append("sort_by", sortBy);
+    if (orderBy) params.append("order", orderBy);
+
+    return axios.get(`${endpoint}/articles?${params.toString()}`)
         .then((response) => {
             return response.data.articles
         })

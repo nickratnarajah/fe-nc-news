@@ -3,16 +3,20 @@ import { useEffect } from "react"
 import { requestArticles } from "../utils/axios";
 
 
-function ArticleSearchBox({ setTopic, setArticles, setIsLoading }) {
+function ArticleSearchBox({ setTopic, setArticles, setIsLoading, setSort, setOrder }) {
     const [searchParams] = useSearchParams()
     const topicParam = searchParams.get("topic")
-    console.log(searchParams)
+    const sortByParam = searchParams.get("sort_by")
+    const orderByParam = searchParams.get("order")
 
     useEffect(() => {
         setIsLoading(true)
         setTopic(topicParam || "")
-        requestArticles(topicParam || "")
+        setSort(sortByParam || "")
+        setOrder(orderByParam || "")
+        requestArticles(topicParam, sortByParam, orderByParam)
           .then((articles) => {
+            console.log(articles)
                 setArticles(articles)
                 setIsLoading(false)
             })
@@ -31,8 +35,8 @@ function ArticleSearchBox({ setTopic, setArticles, setIsLoading }) {
                 <button type="submit">Search</button> */}
                 <label htmlFor="filter-by-topic">Filter by Topic</label>
                 <input type="text" id="filter-by-topic" name="topic"/>
-                <label htmlFor="sort-by">Sort By</label>
-                <select id="sort-by" name="sort-by" size="6">
+                <label htmlFor="sort_by">Sort By</label>
+                <select id="sort_by" name="sort_by" size="6">
                     <option>articleID</option>
                     <option>title</option> 
                     <option>topic</option>
@@ -42,9 +46,9 @@ function ArticleSearchBox({ setTopic, setArticles, setIsLoading }) {
                     <option>comment_count</option>
                 </select>
                 <label htmlFor="order-by">Order By</label>
-                <select id="order-by" name="order-by" size="2">
-                    <option>ascending</option>
-                    <option>descending</option>
+                <select id="order-by" name="order" size="2">
+                    <option value="asc">ascending</option>
+                    <option value="desc">descending</option>
                 </select>
                 <button>Go</button>
             </form>
