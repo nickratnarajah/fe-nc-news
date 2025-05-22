@@ -16,15 +16,16 @@ function ArticleSearchBox({ setTopic, setArticles, setIsLoading, setSort, setOrd
         setOrder(orderByParam || "")
         requestArticles(topicParam, sortByParam, orderByParam)
           .then((articles) => {
-            console.log(articles)
                 setArticles(articles)
                 setIsLoading(false)
             })
-            .catch(() => {
-                setArticles([])
+            .catch((error) => {
                 setIsLoading(false)
+                if (error.response.status === 400){
+                    alert("Oops, something went wrong. It might be the topic you searched for isn't valid. Try again with a valid topic filter")}
+                
             })
-        }, [topicParam, setArticles, setIsLoading, setTopic])
+        }, [topicParam, sortByParam, orderByParam, setArticles, setIsLoading, setTopic, setSort, setOrder])
     
 
     return (
