@@ -1,10 +1,10 @@
 import axios from "axios";
 const endpoint = "https://nick-nc-news-first-project.onrender.com/api"
 
-export const requestArticles = () => {
-    return axios.get(endpoint + "/articles")
+export const requestArticles = (topic) => {
+    const topicString = topic ? `?topic=${topic}` : ""
+    return axios.get(endpoint + "/articles" + topicString)
         .then((response) => {
-            console.log(response, "response of api get request")
             return response.data.articles
         })
     }
