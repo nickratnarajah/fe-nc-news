@@ -1,4 +1,4 @@
-NC News – Front End
+# NC News – Front End
 
 Deployed Version:
 🔗 https://nickrat-nc-news.netlify.app
@@ -8,24 +8,24 @@ NC News is a news aggregation app where users can browse articles, read comments
 
 This front end is built with React, and it interacts with a RESTful API hosted separately. Users can:
 
-View a list of articles by topic
+* View a list of articles by topic
 
-Sort and filter articles
+* Sort and filter articles
 
-Read full articles and comments
+* Read full articles and comments
 
-Upvote/downvote articles
+* Upvote/downvote articles
 
-Post and delete comments (if logged in)
+* Post and delete comments (if logged in)
 
 
 Future updates will include:
 
-Being able to search for individual users, finding comments and articles associated with them
+* Search for individual users, finding comments and articles associated with them
 
-Post a new article
+* Post a new article
 
-Upvote/downcote comments
+* Upvote/downcote comments
 
 
 🖥️ Tech Stack
