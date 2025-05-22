@@ -4,6 +4,7 @@ import { requestArticleById } from "../utils/axios"
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
 import { sendNewVote } from "../utils/axios";
+import NotFound from "./NotFound";
 
 
 function ArticlePage(){
@@ -14,6 +15,8 @@ const [viewComments, setViewComments] = useState(false)
 const [errorMsg, setErrorMsg] = useState(null)
 const [showCommentForm, setShowCommentForm] = useState(false)
 const [comments, setComments] = useState([])
+const [notFound, setNotFound] = useState(false)
+const [isLoading, setIsLoading] = useState(false)
 
 function handleViewClick(){
     setViewComments(!viewComments)
@@ -37,15 +40,23 @@ function handleVoteClick(newVote){
 
 
   useEffect(() => {
+    setIsLoading(true)
+        setNotFound(false)
         requestArticleById(article_id)
         .then((article) => {
             setArticle(article)
+            setIsLoading(false)
         })
         .catch((error) => {
-            console.error(error)
+            if (error.response.status === 404){
+                setNotFound(true)
+            }
+            setIsLoading(false)
         })
     }, [article_id])
-    if (!article) return <p>Loading article . . .</p>
+    if (isLoading) return <p>Loading article . . .</p>
+    if (notFound) return <NotFound />
+    if (!article) return null
 
     return (
         <>
