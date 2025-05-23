@@ -1,20 +1,19 @@
-import { useSearchParams } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { requestArticles } from "../utils/axios";
 
 
-function ArticleSearchBox({ setTopic, setArticles, setIsLoading, setSort, setOrder }) {
-    const [searchParams] = useSearchParams()
+function ArticleSearchBox({ setTopic, setArticles, setIsLoading, setSort, setOrder, page, searchParams }) {
     const topicParam = searchParams.get("topic")
     const sortByParam = searchParams.get("sort_by")
     const orderByParam = searchParams.get("order")
+      
 
     useEffect(() => {
         setIsLoading(true)
-        setTopic(topicParam || "")
-        setSort(sortByParam || "")
-        setOrder(orderByParam || "")
-        requestArticles(topicParam, sortByParam, orderByParam)
+        setTopic(topicParam)
+        setSort(sortByParam)
+        setOrder(orderByParam)
+        requestArticles(topicParam, sortByParam, orderByParam, page)
           .then((articles) => {
                 setArticles(articles)
                 setIsLoading(false)
@@ -25,7 +24,7 @@ function ArticleSearchBox({ setTopic, setArticles, setIsLoading, setSort, setOrd
                     alert("Oops, something went wrong. It might be the topic you searched for isn't valid. Try again with a valid topic filter")}
                 
             })
-        }, [topicParam, sortByParam, orderByParam, setArticles, setIsLoading, setTopic, setSort, setOrder])
+        }, [topicParam, sortByParam, orderByParam, setArticles, setIsLoading, setTopic, setSort, setOrder, page])
     
 
     return (

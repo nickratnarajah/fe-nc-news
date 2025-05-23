@@ -31,9 +31,11 @@ function ActionList(){
 
     return (
         <>
+        <div className="actions-wrapper">
         <button className="view-articles-button" onClick={() => navigate("/articles")}>View Articles</button>
         <button className="post-article-button">Post New Article</button>
         <button className="find-users-button">Find a User</button>
+        </div>
         </>
     )
 }
